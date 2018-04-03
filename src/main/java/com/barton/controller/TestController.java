@@ -38,7 +38,7 @@ public class TestController {
 
         //加密
         byte[] encrypt = aes.encrypt(content);
-        //解密
+        //解密离开家离开家离开
         byte[] decrypt = aes.decrypt(encrypt);
 
         //加密为16进制表示
