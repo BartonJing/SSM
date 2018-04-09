@@ -134,7 +134,23 @@
 
         注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
      -->
-		<table tableName="test" domainObjectName="Test"
+		<table tableName="auth_user" domainObjectName="User"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false"></table>
+		<table tableName="auth_permission" domainObjectName="Permission"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false"></table>
+		<table tableName="auth_role" domainObjectName="Role"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false"></table>
+		<table tableName="auth_role_permission" domainObjectName="RolePermission"
+			   enableCountByExample="false" enableUpdateByExample="false"
+			   enableDeleteByExample="false" enableSelectByExample="false"
+			   selectByExampleQueryId="false"></table>
+		<table tableName="auth_user_role" domainObjectName="UserRole"
 			   enableCountByExample="false" enableUpdateByExample="false"
 			   enableDeleteByExample="false" enableSelectByExample="false"
 			   selectByExampleQueryId="false"></table>
