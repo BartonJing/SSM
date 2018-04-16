@@ -149,4 +149,14 @@
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />
+    from auth_user
+    <where>
+      <if test="name != null and name != ''">
+        AND name = #{name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
 </mapper>
