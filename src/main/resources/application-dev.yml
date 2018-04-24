@@ -13,7 +13,7 @@ spring:
     mode: HTML5
   aop:
     auto: true
-    proxy-target-class: false
+    proxy-target-class: true
 
   datasource:
     initialize: false #false时不进行数据库表结构和数据初始化
