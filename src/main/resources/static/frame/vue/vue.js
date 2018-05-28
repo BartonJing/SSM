@@ -9,7 +9,7 @@
             (global.Vue = factory());
 }(this, (function () { 'use strict';
 
-    /*  */
+  /*  */
 
     var emptyObject = Object.freeze({});
 
@@ -192,7 +192,7 @@
      * backwards compatibility.
      */
 
-    /* istanbul ignore next */
+  /* istanbul ignore next */
     function polyfillBind (fn, ctx) {
         function boundFn (a) {
             var l = arguments.length;
@@ -300,11 +300,11 @@
                             return looseEqual(a[key], b[key])
                         })
                 } else {
-                    /* istanbul ignore next */
+                  /* istanbul ignore next */
                     return false
                 }
             } catch (e) {
-                /* istanbul ignore next */
+              /* istanbul ignore next */
                 return false
             }
         } else if (!isObjectA && !isObjectB) {
@@ -356,7 +356,7 @@
         'errorCaptured'
     ];
 
-    /*  */
+  /*  */
 
     var config = ({
         /**
@@ -446,7 +446,7 @@
         _lifecycleHooks: LIFECYCLE_HOOKS
     })
 
-    /*  */
+  /*  */
 
     /**
      * Check if a string starts with $ or _
@@ -486,7 +486,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
 // can we use __proto__?
     var hasProto = '__proto__' in {};
@@ -512,7 +512,7 @@
             var opts = {};
             Object.defineProperty(opts, 'passive', ({
                 get: function get () {
-                    /* istanbul ignore next */
+                  /* istanbul ignore next */
                     supportsPassive = true;
                 }
             })); // https://github.com/facebook/flow/issues/285
@@ -525,7 +525,7 @@
     var _isServer;
     var isServerRendering = function () {
         if (_isServer === undefined) {
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (!inBrowser && !inWeex && typeof global !== 'undefined') {
                 // detect presence of vue-server-renderer and avoid
                 // Webpack shimming the process
@@ -540,7 +540,7 @@
 // detect devtools
     var devtools = inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
 
-    /* istanbul ignore next */
+  /* istanbul ignore next */
     function isNative (Ctor) {
         return typeof Ctor === 'function' && /native code/.test(Ctor.toString())
     }
@@ -550,7 +550,7 @@
         typeof Reflect !== 'undefined' && isNative(Reflect.ownKeys);
 
     var _Set;
-    /* istanbul ignore if */ // $flow-disable-line
+  /* istanbul ignore if */ // $flow-disable-line
     if (typeof Set !== 'undefined' && isNative(Set)) {
         // use native Set when available.
         _Set = Set;
@@ -574,7 +574,7 @@
         }());
     }
 
-    /*  */
+  /*  */
 
     var warn = noop;
     var tip = noop;
@@ -668,7 +668,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
 
     var uid = 0;
@@ -719,7 +719,7 @@
         Dep.target = targetStack.pop();
     }
 
-    /*  */
+  /*  */
 
     var VNode = function VNode (
         tag,
@@ -759,7 +759,7 @@
     var prototypeAccessors = { child: { configurable: true } };
 
 // DEPRECATED: alias for componentInstance for backwards compat.
-    /* istanbul ignore next */
+  /* istanbul ignore next */
     prototypeAccessors.child.get = function () {
         return this.componentInstance
     };
@@ -805,10 +805,10 @@
         return cloned
     }
 
-    /*
-     * not type checking this file because flow doesn't play well with
-     * dynamically accessing methods on Array prototype
-     */
+  /*
+   * not type checking this file because flow doesn't play well with
+   * dynamically accessing methods on Array prototype
+   */
 
     var arrayProto = Array.prototype;
     var arrayMethods = Object.create(arrayProto);
@@ -852,7 +852,7 @@
         });
     });
 
-    /*  */
+  /*  */
 
     var arrayKeys = Object.getOwnPropertyNames(arrayMethods);
 
@@ -916,16 +916,16 @@
      * the prototype chain using __proto__
      */
     function protoAugment (target, src, keys) {
-        /* eslint-disable no-proto */
+      /* eslint-disable no-proto */
         target.__proto__ = src;
-        /* eslint-enable no-proto */
+      /* eslint-enable no-proto */
     }
 
     /**
      * Augment an target Object or Array by defining
      * hidden properties.
      */
-    /* istanbul ignore next */
+  /* istanbul ignore next */
     function copyAugment (target, src, keys) {
         for (var i = 0, l = keys.length; i < l; i++) {
             var key = keys[i];
@@ -1003,11 +1003,11 @@
             },
             set: function reactiveSetter (newVal) {
                 var value = getter ? getter.call(obj) : val;
-                /* eslint-disable no-self-compare */
+              /* eslint-disable no-self-compare */
                 if (newVal === value || (newVal !== newVal && value !== value)) {
                     return
                 }
-                /* eslint-enable no-self-compare */
+              /* eslint-enable no-self-compare */
                 if ("development" !== 'production' && customSetter) {
                     customSetter();
                 }
@@ -1104,7 +1104,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     /**
      * Option overwriting strategies are functions that handle
@@ -1276,7 +1276,7 @@
         // work around Firefox's Object.prototype.watch...
         if (parentVal === nativeWatch) { parentVal = undefined; }
         if (childVal === nativeWatch) { childVal = undefined; }
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (!childVal) { return Object.create(parentVal || null) }
         {
             assertObjectType(key, childVal, vm);
@@ -1501,7 +1501,7 @@
         id,
         warnMissing
     ) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (typeof id !== 'string') {
             return
         }
@@ -1523,7 +1523,7 @@
         return res
     }
 
-    /*  */
+  /*  */
 
     function validateProp (
         key,
@@ -1701,7 +1701,7 @@
         return -1
     }
 
-    /*  */
+  /*  */
 
     function handleError (err, vm, info) {
         if (vm) {
@@ -1738,7 +1738,7 @@
         {
             warn(("Error in " + info + ": \"" + (err.toString()) + "\""), vm);
         }
-        /* istanbul ignore else */
+      /* istanbul ignore else */
         if ((inBrowser || inWeex) && typeof console !== 'undefined') {
             console.error(err);
         } else {
@@ -1746,8 +1746,8 @@
         }
     }
 
-    /*  */
-    /* globals MessageChannel */
+  /*  */
+  /* globals MessageChannel */
 
     var callbacks = [];
     var pending = false;
@@ -1777,7 +1777,7 @@
 // Technically setImmediate should be the ideal choice, but it's only available
 // in IE. The only polyfill that consistently queues the callback after all DOM
 // events triggered in the same loop is by using MessageChannel.
-    /* istanbul ignore if */
+  /* istanbul ignore if */
     if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
         macroTimerFunc = function () {
             setImmediate(flushCallbacks);
@@ -1794,14 +1794,14 @@
             port.postMessage(1);
         };
     } else {
-        /* istanbul ignore next */
+      /* istanbul ignore next */
         macroTimerFunc = function () {
             setTimeout(flushCallbacks, 0);
         };
     }
 
 // Determine microtask defer implementation.
-    /* istanbul ignore next, $flow-disable-line */
+  /* istanbul ignore next, $flow-disable-line */
     if (typeof Promise !== 'undefined' && isNative(Promise)) {
         var p = Promise.resolve();
         microTimerFunc = function () {
@@ -1860,14 +1860,14 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var mark;
     var measure;
 
     {
         var perf = inBrowser && window.performance;
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (
             perf &&
             perf.mark &&
@@ -1885,7 +1885,7 @@
         }
     }
 
-    /* not type checking this file because flow doesn't play well with Proxy */
+  /* not type checking this file because flow doesn't play well with Proxy */
 
     var initProxy;
 
@@ -1960,7 +1960,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
     var seenObjects = new _Set();
 
@@ -1997,7 +1997,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var normalizeEvent = cached(function (name) {
         var passive = name.charAt(0) === '&';
@@ -2045,7 +2045,7 @@
             def = cur = on[name];
             old = oldOn[name];
             event = normalizeEvent(name);
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (isUndef(cur)) {
                 "development" !== 'production' && warn(
                     "Invalid handler for event \"" + (event.name) + "\": got " + String(cur),
@@ -2069,7 +2069,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function mergeVNodeHook (def, hookKey, hook) {
         if (def instanceof VNode) {
@@ -2089,7 +2089,7 @@
             // no existing hook
             invoker = createFnInvoker([wrappedHook]);
         } else {
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (isDef(oldHook.fns) && isTrue(oldHook.merged)) {
                 // already a merged invoker
                 invoker = oldHook;
@@ -2104,7 +2104,7 @@
         def[hookKey] = invoker;
     }
 
-    /*  */
+  /*  */
 
     function extractPropsFromVNodeData (
         data,
@@ -2172,7 +2172,7 @@
         return false
     }
 
-    /*  */
+  /*  */
 
 // The template compiler attempts to minimize the need for normalization by
 // statically analyzing the template at compile time.
@@ -2259,7 +2259,7 @@
         return res
     }
 
-    /*  */
+  /*  */
 
     function ensureCtor (comp, base) {
         if (
@@ -2386,13 +2386,13 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function isAsyncPlaceholder (node) {
         return node.isComment && node.asyncFactory
     }
 
-    /*  */
+  /*  */
 
     function getFirstComponentChild (children) {
         if (Array.isArray(children)) {
@@ -2405,9 +2405,9 @@
         }
     }
 
-    /*  */
+  /*  */
 
-    /*  */
+  /*  */
 
     function initEvents (vm) {
         vm._events = Object.create(null);
@@ -2545,7 +2545,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
 
 
@@ -2611,7 +2611,7 @@
         return res
     }
 
-    /*  */
+  /*  */
 
     var activeInstance = null;
     var isUpdatingChildComponent = false;
@@ -2745,7 +2745,7 @@
         if (!vm.$options.render) {
             vm.$options.render = createEmptyVNode;
             {
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if ((vm.$options.template && vm.$options.template.charAt(0) !== '#') ||
                     vm.$options.el || el) {
                     warn(
@@ -2765,7 +2765,7 @@
         callHook(vm, 'beforeMount');
 
         var updateComponent;
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if ("development" !== 'production' && config.performance && mark) {
             updateComponent = function () {
                 var name = vm._name;
@@ -2930,7 +2930,7 @@
         popTarget();
     }
 
-    /*  */
+  /*  */
 
 
     var MAX_UPDATE_COUNT = 100;
@@ -3007,7 +3007,7 @@
         callUpdatedHooks(updatedQueue);
 
         // devtool hook
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (devtools && config.devtools) {
             devtools.emit('flush');
         }
@@ -3070,7 +3070,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var uid$1 = 0;
 
@@ -3198,7 +3198,7 @@
      * Will be called when a dependency changes.
      */
     Watcher.prototype.update = function update () {
-        /* istanbul ignore else */
+      /* istanbul ignore else */
         if (this.lazy) {
             this.dirty = true;
         } else if (this.sync) {
@@ -3281,7 +3281,7 @@
         }
     };
 
-    /*  */
+  /*  */
 
     var sharedPropertyDefinition = {
         enumerable: true,
@@ -3330,7 +3330,7 @@
         var loop = function ( key ) {
             keys.push(key);
             var value = validateProp(key, propsOptions, propsData, vm);
-            /* istanbul ignore else */
+          /* istanbul ignore else */
             {
                 var hyphenatedKey = hyphenate(key);
                 if (isReservedAttribute(hyphenatedKey) ||
@@ -3614,7 +3614,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
     function initProvide (vm) {
         var provide = vm.$options.provide;
@@ -3630,7 +3630,7 @@
         if (result) {
             toggleObserving(false);
             Object.keys(result).forEach(function (key) {
-                /* istanbul ignore else */
+              /* istanbul ignore else */
                 {
                     defineReactive(vm, key, result[key], function () {
                         warn(
@@ -3652,7 +3652,7 @@
             var result = Object.create(null);
             var keys = hasSymbol
                 ? Reflect.ownKeys(inject).filter(function (key) {
-                    /* istanbul ignore next */
+                  /* istanbul ignore next */
                     return Object.getOwnPropertyDescriptor(inject, key).enumerable
                 })
                 : Object.keys(inject);
@@ -3683,7 +3683,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     /**
      * Runtime helper for rendering v-for lists.
@@ -3717,7 +3717,7 @@
         return ret
     }
 
-    /*  */
+  /*  */
 
     /**
      * Runtime helper for rendering <slot>
@@ -3766,7 +3766,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     /**
      * Runtime helper for resolving filters
@@ -3775,7 +3775,7 @@
         return resolveAsset(this.$options, 'filters', id, true) || identity
     }
 
-    /*  */
+  /*  */
 
     function isKeyNotMatch (expect, actual) {
         if (Array.isArray(expect)) {
@@ -3807,7 +3807,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     /**
      * Runtime helper for merging v-bind="object" into a VNode's data.
@@ -3861,7 +3861,7 @@
         return data
     }
 
-    /*  */
+  /*  */
 
     /**
      * Runtime helper for rendering static trees.
@@ -3922,7 +3922,7 @@
         node.isOnce = isOnce;
     }
 
-    /*  */
+  /*  */
 
     function bindObjectListeners (data, value) {
         if (value) {
@@ -3943,7 +3943,7 @@
         return data
     }
 
-    /*  */
+  /*  */
 
     function installRenderHelpers (target) {
         target._o = markOnce;
@@ -3963,7 +3963,7 @@
         target._g = bindObjectListeners;
     }
 
-    /*  */
+  /*  */
 
     function FunctionalRenderContext (
         data,
@@ -4084,7 +4084,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
 
 
@@ -4095,15 +4095,15 @@
 
 // Updates the state of the component to weex native render engine.
 
-    /*  */
+  /*  */
 
 // https://github.com/Hanks10100/weex-native-directive/tree/master/component
 
 // listening on native callback
 
-    /*  */
+  /*  */
 
-    /*  */
+  /*  */
 
 // inline hooks to be invoked on component VNodes during patch
     var componentVNodeHooks = {
@@ -4278,7 +4278,7 @@
         // Weex specific: invoke recycle-list optimized @render function for
         // extracting cell-slot template.
         // https://github.com/Hanks10100/weex-native-directive/tree/master/component
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         return vnode
     }
 
@@ -4325,7 +4325,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var SIMPLE_NORMALIZE = 1;
     var ALWAYS_NORMALIZE = 2;
@@ -4466,7 +4466,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function initRender (vm) {
         vm._vnode = null; // the root of the child tree
@@ -4489,7 +4489,7 @@
         // they need to be reactive so that HOCs using them are always updated
         var parentData = parentVnode && parentVnode.data;
 
-        /* istanbul ignore else */
+      /* istanbul ignore else */
         {
             defineReactive(vm, '$attrs', parentData && parentData.attrs || emptyObject, function () {
                 !isUpdatingChildComponent && warn("$attrs is readonly.", vm);
@@ -4537,7 +4537,7 @@
                 handleError(e, vm, "render");
                 // return error render result,
                 // or previous vnode to prevent render error causing blank component
-                /* istanbul ignore else */
+              /* istanbul ignore else */
                 {
                     if (vm.$options.renderError) {
                         try {
@@ -4568,7 +4568,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
     var uid$3 = 0;
 
@@ -4579,7 +4579,7 @@
             vm._uid = uid$3++;
 
             var startTag, endTag;
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if ("development" !== 'production' && config.performance && mark) {
                 startTag = "vue-perf-start:" + (vm._uid);
                 endTag = "vue-perf-end:" + (vm._uid);
@@ -4601,7 +4601,7 @@
                     vm
                 );
             }
-            /* istanbul ignore else */
+          /* istanbul ignore else */
             {
                 initProxy(vm);
             }
@@ -4616,7 +4616,7 @@
             initProvide(vm); // resolve provide after data/props
             callHook(vm, 'created');
 
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if ("development" !== 'production' && config.performance && mark) {
                 vm._name = formatComponentName(vm, false);
                 mark(endTag);
@@ -4722,7 +4722,7 @@
     lifecycleMixin(Vue);
     renderMixin(Vue);
 
-    /*  */
+  /*  */
 
     function initUse (Vue) {
         Vue.use = function (plugin) {
@@ -4744,7 +4744,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
     function initMixin$1 (Vue) {
         Vue.mixin = function (mixin) {
@@ -4753,7 +4753,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
     function initExtend (Vue) {
         /**
@@ -4845,7 +4845,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function initAssetRegisters (Vue) {
         /**
@@ -4859,7 +4859,7 @@
                 if (!definition) {
                     return this.options[type + 's'][id]
                 } else {
-                    /* istanbul ignore if */
+                  /* istanbul ignore if */
                     if ("development" !== 'production' && type === 'component') {
                         validateComponentName(id);
                     }
@@ -4877,7 +4877,7 @@
         });
     }
 
-    /*  */
+  /*  */
 
     function getComponentName (opts) {
         return opts && (opts.Ctor.options.name || opts.tag)
@@ -4891,7 +4891,7 @@
         } else if (isRegExp(pattern)) {
             return pattern.test(name)
         }
-        /* istanbul ignore next */
+      /* istanbul ignore next */
         return false
     }
 
@@ -5011,7 +5011,7 @@
         KeepAlive: KeepAlive
     }
 
-    /*  */
+  /*  */
 
     function initGlobalAPI (Vue) {
         // config
@@ -5065,7 +5065,7 @@
 
     Object.defineProperty(Vue.prototype, '$ssrContext', {
         get: function get () {
-            /* istanbul ignore next */
+          /* istanbul ignore next */
             return this.$vnode && this.$vnode.ssrContext
         }
     });
@@ -5077,7 +5077,7 @@
 
     Vue.version = '2.5.16';
 
-    /*  */
+  /*  */
 
 // these are reserved for web because they are directly compiled away
 // during template compilation
@@ -5119,7 +5119,7 @@
         return val == null || val === false
     };
 
-    /*  */
+  /*  */
 
     function genClassForVnode (vnode) {
         var data = vnode.data;
@@ -5155,7 +5155,7 @@
         if (isDef(staticClass) || isDef(dynamicClass)) {
             return concat(staticClass, stringifyClass(dynamicClass))
         }
-        /* istanbul ignore next */
+      /* istanbul ignore next */
         return ''
     }
 
@@ -5173,7 +5173,7 @@
         if (typeof value === 'string') {
             return value
         }
-        /* istanbul ignore next */
+      /* istanbul ignore next */
         return ''
     }
 
@@ -5200,7 +5200,7 @@
         return res
     }
 
-    /*  */
+  /*  */
 
     var namespaceMap = {
         svg: 'http://www.w3.org/2000/svg',
@@ -5249,7 +5249,7 @@
 
     var unknownElementCache = Object.create(null);
     function isUnknownElement (tag) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (!inBrowser) {
             return true
         }
@@ -5257,7 +5257,7 @@
             return false
         }
         tag = tag.toLowerCase();
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (unknownElementCache[tag] != null) {
             return unknownElementCache[tag]
         }
@@ -5275,7 +5275,7 @@
 
     var isTextInputType = makeMap('text,number,password,search,email,tel,url');
 
-    /*  */
+  /*  */
 
     /**
      * Query an element selector if it's not an element already.
@@ -5295,7 +5295,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function createElement$1 (tagName, vnode) {
         var elm = document.createElement(tagName);
@@ -5369,7 +5369,7 @@
         setStyleScope: setStyleScope
     });
 
-    /*  */
+  /*  */
 
     var ref = {
         create: function create (_, vnode) {
@@ -5539,11 +5539,11 @@
             }
 
             vnode.isRootInsert = !nested; // for transition enter check
-        }
-
-        var data = vnode.data;
             if (createComponent(vnode, insertedVnodeQueue, parentElm, refElm)) {
                 return
+            }
+
+            var data = vnode.data;
             var children = vnode.children;
             var tag = vnode.tag;
             if (isDef(tag)) {
@@ -5566,7 +5566,7 @@
                     : nodeOps.createElement(tag, vnode);
                 setScope(vnode);
 
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 {
                     createChildren(vnode, children, insertedVnodeQueue);
                     if (isDef(data)) {
@@ -5992,7 +5992,7 @@
                         // v-html and domProps: innerHTML
                         if (isDef(i = data) && isDef(i = i.domProps) && isDef(i = i.innerHTML)) {
                             if (i !== elm.innerHTML) {
-                                /* istanbul ignore if */
+                              /* istanbul ignore if */
                                 if ("development" !== 'production' &&
                                     typeof console !== 'undefined' &&
                                     !hydrationBailed
@@ -6018,7 +6018,7 @@
                             // if childNode is not null, it means the actual childNodes list is
                             // longer than the virtual children list.
                             if (!childrenMatch || childNode) {
-                                /* istanbul ignore if */
+                              /* istanbul ignore if */
                                 if ("development" !== 'production' &&
                                     typeof console !== 'undefined' &&
                                     !hydrationBailed
@@ -6168,7 +6168,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var directives = {
         create: updateDirectives,
@@ -6289,7 +6289,7 @@
         directives
     ]
 
-    /*  */
+  /*  */
 
     function updateAttrs (oldVnode, vnode) {
         var opts = vnode.componentOptions;
@@ -6317,7 +6317,7 @@
         }
         // #4391: in IE9, setting type can reset value for input[type=radio]
         // #6666: IE/Edge forces progress value down to 1 before setting a max
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if ((isIE || isEdge) && attrs.value !== oldAttrs.value) {
             setAttr(elm, 'value', attrs.value);
         }
@@ -6368,7 +6368,7 @@
             // #7138: IE10 & 11 fires input event when setting placeholder on
             // <textarea>... block the first input event and remove the blocker
             // immediately.
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (
                 isIE && !isIE9 &&
                 el.tagName === 'TEXTAREA' &&
@@ -6391,7 +6391,7 @@
         update: updateAttrs
     }
 
-    /*  */
+  /*  */
 
     function updateClass (oldVnode, vnode) {
         var el = vnode.elm;
@@ -6429,7 +6429,7 @@
         update: updateClass
     }
 
-    /*  */
+  /*  */
 
     var validDivisionCharRE = /[\w).+\-_$\]]/;
 
@@ -6527,7 +6527,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function baseWarn (msg) {
         console.error(("[Vue compiler]: " + msg));
@@ -6580,7 +6580,7 @@
     ) {
         modifiers = modifiers || emptyObject;
         // warn prevent and passive modifier
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (
             "development" !== 'production' && warn &&
             modifiers.prevent && modifiers.passive
@@ -6600,7 +6600,7 @@
             delete modifiers.once;
             name = '~' + name; // mark the event as once
         }
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (modifiers.passive) {
             delete modifiers.passive;
             name = '&' + name; // mark the event as passive
@@ -6634,7 +6634,7 @@
         }
 
         var handlers = events[name];
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (Array.isArray(handlers)) {
             important ? handlers.unshift(newHandler) : handlers.push(newHandler);
         } else if (handlers) {
@@ -6689,7 +6689,7 @@
         return val
     }
 
-    /*  */
+  /*  */
 
     /**
      * Cross-platform code generation for component v-model
@@ -6788,7 +6788,7 @@
 
         while (!eof()) {
             chr = next();
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (isStringStart(chr)) {
                 parseString(chr);
             } else if (chr === 0x5B) {
@@ -6842,7 +6842,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var warn$1;
 
@@ -7014,14 +7014,14 @@
         }
     }
 
-    /*  */
+  /*  */
 
 // normalize v-model event tokens that can only be determined at runtime.
 // it's important to place the event as the first in the array because
 // the whole point is ensuring the v-model callback gets called before
 // user-attached handlers.
     function normalizeEvents (on) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (isDef(on[RANGE_TOKEN])) {
             // IE input[type=range] only supports `change` event
             var event = isIE ? 'change' : 'input';
@@ -7030,7 +7030,7 @@
         }
         // This was originally intended to fix #4521 but no longer necessary
         // after 2.5. Keeping it for backwards compat with generated code from < 2.4
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (isDef(on[CHECKBOX_RADIO_TOKEN])) {
             on.change = [].concat(on[CHECKBOX_RADIO_TOKEN], on.change || []);
             delete on[CHECKBOX_RADIO_TOKEN];
@@ -7097,7 +7097,7 @@
         update: updateDOMListeners
     }
 
-    /*  */
+  /*  */
 
     function updateDOMProps (oldVnode, vnode) {
         if (isUndef(oldVnode.data.domProps) && isUndef(vnode.data.domProps)) {
@@ -7191,7 +7191,7 @@
         update: updateDOMProps
     }
 
-    /*  */
+  /*  */
 
     var parseStyleText = cached(function (cssText) {
         var res = {};
@@ -7261,12 +7261,12 @@
         return res
     }
 
-    /*  */
+  /*  */
 
     var cssVarRE = /^--/;
     var importantRE = /\s*!important$/;
     var setProp = function (el, name, val) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (cssVarRE.test(name)) {
             el.style.setProperty(name, val);
         } else if (importantRE.test(val)) {
@@ -7352,19 +7352,19 @@
         update: updateStyle
     }
 
-    /*  */
+  /*  */
 
     /**
      * Add class with compatibility for SVG since classList is not supported on
      * SVG elements in IE
      */
     function addClass (el, cls) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (!cls || !(cls = cls.trim())) {
             return
         }
 
-        /* istanbul ignore else */
+      /* istanbul ignore else */
         if (el.classList) {
             if (cls.indexOf(' ') > -1) {
                 cls.split(/\s+/).forEach(function (c) { return el.classList.add(c); });
@@ -7384,12 +7384,12 @@
      * SVG elements in IE
      */
     function removeClass (el, cls) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (!cls || !(cls = cls.trim())) {
             return
         }
 
-        /* istanbul ignore else */
+      /* istanbul ignore else */
         if (el.classList) {
             if (cls.indexOf(' ') > -1) {
                 cls.split(/\s+/).forEach(function (c) { return el.classList.remove(c); });
@@ -7414,13 +7414,13 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function resolveTransition (def) {
         if (!def) {
             return
         }
-        /* istanbul ignore else */
+      /* istanbul ignore else */
         if (typeof def === 'object') {
             var res = {};
             if (def.css !== false) {
@@ -7454,7 +7454,7 @@
     var animationProp = 'animation';
     var animationEndEvent = 'animationend';
     if (hasTransition) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (window.ontransitionend === undefined &&
             window.onwebkittransitionend !== undefined
         ) {
@@ -7542,7 +7542,7 @@
         var type;
         var timeout = 0;
         var propCount = 0;
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (expectedType === TRANSITION) {
             if (transitionTimeout > 0) {
                 type = TRANSITION;
@@ -7580,7 +7580,7 @@
     }
 
     function getTimeout (delays, durations) {
-        /* istanbul ignore next */
+      /* istanbul ignore next */
         while (delays.length < durations.length) {
             delays = delays.concat(delays);
         }
@@ -7594,7 +7594,7 @@
         return Number(s.slice(0, -1)) * 1000
     }
 
-    /*  */
+  /*  */
 
     function enter (vnode, toggleDisplay) {
         var el = vnode.elm;
@@ -7610,7 +7610,7 @@
             return
         }
 
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (isDef(el._enterCb) || el.nodeType !== 1) {
             return
         }
@@ -7761,7 +7761,7 @@
             return rm()
         }
 
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (isDef(el._leaveCb)) {
             return
         }
@@ -7905,7 +7905,7 @@
             create: _enter,
             activate: _enter,
             remove: function remove$$1 (vnode, rm) {
-                /* istanbul ignore else */
+              /* istanbul ignore else */
                 if (vnode.data.show !== true) {
                     leave(vnode, rm);
                 } else {
@@ -7923,7 +7923,7 @@
         transition
     ]
 
-    /*  */
+  /*  */
 
 // the directive module should be applied last, after all
 // built-in modules have been applied.
@@ -7936,7 +7936,7 @@
      * properties to Elements.
      */
 
-    /* istanbul ignore if */
+  /* istanbul ignore if */
     if (isIE9) {
         // http://www.matts411.com/post/internet-explorer-9-oninput/
         document.addEventListener('selectionchange', function () {
@@ -7969,7 +7969,7 @@
                     // this also fixes the issue where some browsers e.g. iOS Chrome
                     // fires "change" instead of "input" on autocomplete.
                     el.addEventListener('change', onCompositionEnd);
-                    /* istanbul ignore if */
+                  /* istanbul ignore if */
                     if (isIE9) {
                         el.vmodel = true;
                     }
@@ -8002,7 +8002,7 @@
 
     function setSelected (el, binding, vm) {
         actuallySetSelected(el, binding, vm);
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (isIE || isEdge) {
             setTimeout(function () {
                 actuallySetSelected(el, binding, vm);
@@ -8070,7 +8070,7 @@
         el.dispatchEvent(e);
     }
 
-    /*  */
+  /*  */
 
 // recursively search for possible transition defined inside the component root
     function locateNode (vnode) {
@@ -8101,7 +8101,7 @@
             var value = ref.value;
             var oldValue = ref.oldValue;
 
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (!value === !oldValue) { return }
             vnode = locateNode(vnode);
             var transition$$1 = vnode.data && vnode.data.transition;
@@ -8139,7 +8139,7 @@
         show: show
     }
 
-    /*  */
+  /*  */
 
 // Provides transition support for a single element/component.
 // supports transition mode (out-in / in-out)
@@ -8224,7 +8224,7 @@
 
             // filter out text nodes (possible whitespaces)
             children = children.filter(function (c) { return c.tag || isAsyncPlaceholder(c); });
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (!children.length) {
                 return
             }
@@ -8261,7 +8261,7 @@
             // apply transition data to child
             // use getRealChild() to ignore abstract components e.g. keep-alive
             var child = getRealChild(rawChild);
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             if (!child) {
                 return rawChild
             }
@@ -8328,7 +8328,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
 // Provides transition support for list items.
 // supports move transitions using the FLIP technique.
@@ -8442,11 +8442,11 @@
 
         methods: {
             hasMove: function hasMove (el, moveClass) {
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if (!hasTransition) {
                     return false
                 }
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if (this._hasMove) {
                     return this._hasMove
                 }
@@ -8470,11 +8470,11 @@
     }
 
     function callPendingCbs (c) {
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (c.elm._moveCb) {
             c.elm._moveCb();
         }
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (c.elm._enterCb) {
             c.elm._enterCb();
         }
@@ -8502,7 +8502,7 @@
         TransitionGroup: TransitionGroup
     }
 
-    /*  */
+  /*  */
 
 // install platform specific utils
     Vue.config.mustUseProp = mustUseProp;
@@ -8528,7 +8528,7 @@
     };
 
 // devtools global hook
-    /* istanbul ignore next */
+  /* istanbul ignore next */
     if (inBrowser) {
         setTimeout(function () {
             if (config.devtools) {
@@ -8559,7 +8559,7 @@
         }, 0);
     }
 
-    /*  */
+  /*  */
 
     var defaultTagRE = /\{\{((?:.|\n)+?)\}\}/g;
     var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g;
@@ -8607,7 +8607,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function transformNode (el, options) {
         var warn = options.warn || baseWarn;
@@ -8649,13 +8649,13 @@
         genData: genData
     }
 
-    /*  */
+  /*  */
 
     function transformNode$1 (el, options) {
         var warn = options.warn || baseWarn;
         var staticStyle = getAndRemoveAttr(el, 'style');
         if (staticStyle) {
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             {
                 var res = parseText(staticStyle, options.delimiters);
                 if (res) {
@@ -8693,7 +8693,7 @@
         genData: genData$1
     }
 
-    /*  */
+  /*  */
 
     var decoder;
 
@@ -8705,7 +8705,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var isUnaryTag = makeMap(
         'area,base,br,col,embed,frame,hr,img,input,isindex,keygen,' +
@@ -8732,12 +8732,12 @@
      * Not type-checking this file because it's mostly vendor code.
      */
 
-    /*!
-     * HTML Parser By John Resig (ejohn.org)
-     * Modified by Juriy "kangax" Zaytsev
-     * Original code by Erik Arvidsson, Mozilla Public License
-     * http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
-     */
+  /*!
+   * HTML Parser By John Resig (ejohn.org)
+   * Modified by Juriy "kangax" Zaytsev
+   * Original code by Erik Arvidsson, Mozilla Public License
+   * http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
+   */
 
 // Regular Expressions for parsing tags and attributes
     var attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
@@ -9036,7 +9036,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     var onRE = /^@|^v-on:/;
     var dirRE = /^v-|^@|^:/;
@@ -9139,7 +9139,7 @@
                 var ns = (currentParent && currentParent.ns) || platformGetTagNamespace(tag);
 
                 // handle IE svg bug
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if (isIE && ns === 'svg') {
                     attrs = guardIESVGBug(attrs);
                 }
@@ -9268,7 +9268,7 @@
                     return
                 }
                 // IE textarea placeholder bug
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if (isIE &&
                     currentParent.tag === 'textarea' &&
                     currentParent.attrsMap.placeholder === text
@@ -9478,7 +9478,7 @@
             var slotScope;
             if (el.tag === 'template') {
                 slotScope = getAndRemoveAttr(el, 'scope');
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if ("development" !== 'production' && slotScope) {
                     warn$2(
                         "the \"scope\" attribute for scoped slots have been deprecated and " +
@@ -9490,7 +9490,7 @@
                 }
                 el.slotScope = slotScope || getAndRemoveAttr(el, 'slot-scope');
             } else if ((slotScope = getAndRemoveAttr(el, 'slot-scope'))) {
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if ("development" !== 'production' && el.attrsMap['v-for']) {
                     warn$2(
                         "Ambiguous combined usage of slot-scope and v-for on <" + (el.tag) + "> " +
@@ -9658,7 +9658,7 @@
     var ieNSBug = /^xmlns:NS\d+/;
     var ieNSPrefix = /^NS\d+:/;
 
-    /* istanbul ignore next */
+  /* istanbul ignore next */
     function guardIESVGBug (attrs) {
         var res = [];
         for (var i = 0; i < attrs.length; i++) {
@@ -9687,7 +9687,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     /**
      * Expand input[v-model] with dyanmic type bindings into v-if-else chains
@@ -9775,7 +9775,7 @@
         model$2
     ]
 
-    /*  */
+  /*  */
 
     function text (el, dir) {
         if (dir.value) {
@@ -9783,7 +9783,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function html (el, dir) {
         if (dir.value) {
@@ -9797,7 +9797,7 @@
         html: html
     }
 
-    /*  */
+  /*  */
 
     var baseOptions = {
         expectHTML: true,
@@ -9812,7 +9812,7 @@
         staticKeys: genStaticKeys(modules$1)
     };
 
-    /*  */
+  /*  */
 
     var isStaticKey;
     var isPlatformReservedTag;
@@ -9939,7 +9939,7 @@
         return false
     }
 
-    /*  */
+  /*  */
 
     var fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function\s*\(/;
     var simplePathRE = /^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\['[^']*?']|\["[^"]*?"]|\[\d+]|\[[A-Za-z_$][\w$]*])*$/;
@@ -10020,7 +10020,7 @@
             if (isMethodPath || isFunctionExpression) {
                 return handler.value
             }
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             return ("function($event){" + (handler.value) + "}") // inline statement
         } else {
             var code = '';
@@ -10057,7 +10057,7 @@
                 : isFunctionExpression
                     ? ("return (" + (handler.value) + ")($event)")
                     : handler.value;
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             return ("function($event){" + code + handlerCode + "}")
         }
     }
@@ -10083,7 +10083,7 @@
         )
     }
 
-    /*  */
+  /*  */
 
     function on (el, dir) {
         if ("development" !== 'production' && dir.modifiers) {
@@ -10092,7 +10092,7 @@
         el.wrapListeners = function (code) { return ("_g(" + code + "," + (dir.value) + ")"); };
     }
 
-    /*  */
+  /*  */
 
     function bind$1 (el, dir) {
         el.wrapData = function (code) {
@@ -10100,7 +10100,7 @@
         };
     }
 
-    /*  */
+  /*  */
 
     var baseDirectives = {
         on: on,
@@ -10108,7 +10108,7 @@
         cloak: noop
     }
 
-    /*  */
+  /*  */
 
     var CodegenState = function CodegenState (options) {
         this.options = options;
@@ -10538,7 +10538,7 @@
         var res = '';
         for (var i = 0; i < props.length; i++) {
             var prop = props[i];
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             {
                 res += "\"" + (prop.name) + "\":" + (transformSpecialNewlines(prop.value)) + ",";
             }
@@ -10553,7 +10553,7 @@
             .replace(/\u2029/g, '\\u2029')
     }
 
-    /*  */
+  /*  */
 
 // these keywords should not appear inside expressions, but operators like
 // typeof, instanceof and in are allowed
@@ -10660,7 +10660,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function createFunction (code, errors) {
         try {
@@ -10683,7 +10683,7 @@
             var warn$$1 = options.warn || warn;
             delete options.warn;
 
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             {
                 // detect possible CSP restriction
                 try {
@@ -10737,7 +10737,7 @@
             // check function generation errors.
             // this should only happen if there is a bug in the compiler itself.
             // mostly for codegen development use
-            /* istanbul ignore if */
+          /* istanbul ignore if */
             {
                 if ((!compiled.errors || !compiled.errors.length) && fnGenErrors.length) {
                     warn$$1(
@@ -10757,7 +10757,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
     function createCompilerCreator (baseCompile) {
         return function createCompiler (baseOptions) {
@@ -10809,7 +10809,7 @@
         }
     }
 
-    /*  */
+  /*  */
 
 // `createCompilerCreator` allows creating compilers that use alternative
 // parser/optimizer/codegen, e.g the SSR optimizing compiler.
@@ -10830,12 +10830,12 @@
         }
     });
 
-    /*  */
+  /*  */
 
     var ref$1 = createCompiler(baseOptions);
     var compileToFunctions = ref$1.compileToFunctions;
 
-    /*  */
+  /*  */
 
 // check whether current browser encodes a char inside attribute values
     var div;
@@ -10850,7 +10850,7 @@
 // #6828: chrome encodes content in a[href]
     var shouldDecodeNewlinesForHref = inBrowser ? getShouldDecode(true) : false;
 
-    /*  */
+  /*  */
 
     var idToTemplate = cached(function (id) {
         var el = query(id);
@@ -10864,7 +10864,7 @@
     ) {
         el = el && query(el);
 
-        /* istanbul ignore if */
+      /* istanbul ignore if */
         if (el === document.body || el === document.documentElement) {
             "development" !== 'production' && warn(
                 "Do not mount Vue to <html> or <body> - mount to normal elements instead."
@@ -10880,7 +10880,7 @@
                 if (typeof template === 'string') {
                     if (template.charAt(0) === '#') {
                         template = idToTemplate(template);
-                        /* istanbul ignore if */
+                      /* istanbul ignore if */
                         if ("development" !== 'production' && !template) {
                             warn(
                                 ("Template element not found or is empty: " + (options.template)),
@@ -10900,7 +10900,7 @@
                 template = getOuterHTML(el);
             }
             if (template) {
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if ("development" !== 'production' && config.performance && mark) {
                     mark('compile');
                 }
@@ -10916,7 +10916,7 @@
                 options.render = render;
                 options.staticRenderFns = staticRenderFns;
 
-                /* istanbul ignore if */
+              /* istanbul ignore if */
                 if ("development" !== 'production' && config.performance && mark) {
                     mark('compile end');
                     measure(("vue " + (this._name) + " compile"), 'compile', 'compile end');
