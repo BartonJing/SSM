@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 @EnableTransactionManagement
 @SpringBootApplication
-@EnableCaching
+//@EnableCaching
 public class SsmApplication {
 
 	public static void main(String[] args) {

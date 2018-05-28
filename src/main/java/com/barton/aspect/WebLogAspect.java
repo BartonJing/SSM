@@ -31,11 +31,11 @@ public class WebLogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         // 记录下请求内容
-        logger.info("CLIENT_URL : " + request.getRequestURL().toString());
+        /*logger.info("CLIENT_URL : " + request.getRequestURL().toString());
         logger.info("CLIENT_HTTP_METHOD : " + request.getMethod());
         logger.info("CLIENT_IP : " + request.getRemoteAddr());
         logger.info("CLIENT_CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-        logger.info("CLIENT_ARGS : " + Arrays.toString(joinPoint.getArgs()));
+        logger.info("CLIENT_ARGS : " + Arrays.toString(joinPoint.getArgs()));*/
     }
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")

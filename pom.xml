@@ -101,6 +101,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.theborakompanioni</groupId>
+			<artifactId>thymeleaf-extras-shiro</artifactId>
+			<version>${thymeleaf-shiro.version}</version>
+		</dependency>
 		<!-- 使用Shiro认证 -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>

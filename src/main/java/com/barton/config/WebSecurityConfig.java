@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * 创建时间：2017-10-23
  * 描述：登录session校验配置
  */
-@Configuration
+//@Configuration
 public class WebSecurityConfig extends WebMvcConfigurerAdapter {
     /**
      * 登录session key
@@ -45,14 +45,14 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter {
         public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
                 throws Exception {
             HttpSession session = request.getSession();
-            if (session.getAttribute(SESSION_KEY) != null){
+            /*if (session.getAttribute(SESSION_KEY) != null){
                 return true;
             }
 
             // 跳转登录
             String url = "/login";
-            response.sendRedirect(url);
-            return false;
+            response.sendRedirect(url);*/
+            return true;
         }
     }
 }

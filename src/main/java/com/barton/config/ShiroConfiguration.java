@@ -1,8 +1,8 @@
 package com.barton.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
-import com.barton.domain.entity.Permission;
 import com.barton.filter.AjaxUserFilter;
 import com.barton.security.MShiroFilterFactoryBean;
 import com.barton.security.RetryLimitHashedCredentialsMatcher;
@@ -25,7 +25,6 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 
 import javax.servlet.DispatcherType;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -73,7 +72,7 @@ public class ShiroConfiguration {
         //ajax请求验证
         shiroFilterFactoryBean.getFilters().put("user", ajaxUserFilter());
         //加载数据库配置权限
-        loadShiroFilterChain(shiroFilterFactoryBean, permissionService);
+        loadShiroFilterChain(shiroFilterFactoryBean);
         return shiroFilterFactoryBean;
     }
 
@@ -102,7 +101,7 @@ public class ShiroConfiguration {
         return userRealm;
     }
 
-    @Bean(name = "cacheManager")
+    @Bean(name = "shiroCacheManager")
     public EhCacheManager cacheManager() {
         EhCacheManager cacheManager = new EhCacheManager();
         cacheManager.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");
@@ -167,20 +166,23 @@ public class ShiroConfiguration {
     /**
      * 加载shiroFilter权限控制规则（从数据库读取然后配置）
      */
-    private void loadShiroFilterChain(ShiroFilterFactoryBean shiroFilterFactoryBean, PermissionService permissionService) {
+    private void loadShiroFilterChain(ShiroFilterFactoryBean shiroFilterFactoryBean) {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         logger.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/dashboard", "user");
         filterChainDefinitionMap.put("/api/**", "anon");//api请求不经过shiro，有专门AOP处理
-        filterChainDefinitionMap.put("/basic-flow", "anon");
         filterChainDefinitionMap.put("/static/**", "anon");
         //访问其他url需要用户登录，并且具有相应权限
-        List<Permission> permissions = permissionService.selectAllPermissions();
+        /*List<Permission> permissions = permissionService.selectAllPermissions();
         for (Permission permission : permissions) {
             filterChainDefinitionMap.put(permission.getPath(), "user,perms[" + permission.getCode() + "]");
-        }
+        }*/
+        filterChainDefinitionMap.put("/dashboard/test/test","user,perms[aaaa]");
+        // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
+        // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
+        //filterChainDefinitionMap.put("/**", "authc");
         logger.info(filterChainDefinitionMap.toString());
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
     }
