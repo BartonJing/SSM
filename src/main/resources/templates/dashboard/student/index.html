@@ -57,13 +57,18 @@
     </el-form-item>
     <el-form-item label="电话"
                   prop="tele"
-                  :rules="{required: true, message: '电话不能为空', trigger: 'blur'}">
+                  :rules="[{required: true, message: '电话不能为空', trigger: 'blur'},
+                   { validator: teleVa,trigger: 'blur'}]">
         <el-input placeholder="请输入电话" v-model="student.tele"></el-input>
     </el-form-item>
-    <el-form-item label="邮件">
+    <el-form-item label="邮件"
+                  prop="email"
+                  :rules="{type: 'email', message: '邮件格式不正确', trigger: 'blur'}">
         <el-input placeholder="请输入邮件"  v-model="student.email"></el-input>
     </el-form-item>
-    <el-form-item label="QQ">
+    <el-form-item label="QQ"
+                  prop="qq"
+                  :rules="{ validator: numberVa,trigger: 'blur'}">
         <el-input placeholder="请输入QQ" v-model="student.qq"></el-input>
     </el-form-item>
     <el-form-item label="备注">
@@ -98,6 +103,22 @@
             student: student,
         },
         methods: {
+            teleVa:function(rule, value, callback) {
+                var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+                if (!myreg.test(value)) {
+                    callback(new Error('电话号码格式不正确'));
+                } else {
+                    callback();
+                }
+            },
+            numberVa:function(rule, value, callback) {
+                var myreg = /^[0-9]*$/ ;
+                if (!myreg.test(value)) {
+                    callback(new Error('请输入数字'));
+                } else {
+                    callback();
+                }
+            },
             onSubmit:function () {
                 var ths = this;
                 ths.$refs['form'].validate(function (valid) {
