@@ -1,5 +1,7 @@
 package com.barton.domain.entity;
 
+import java.util.Date;
+
 public class Student extends BaseDomain {
     /**
      * 
@@ -50,6 +52,16 @@ public class Student extends BaseDomain {
      * 
      */
     private String remark;
+
+    /**
+     * 
+     */
+    private Date endDate;
+
+    /**
+     * 
+     */
+    private Date createDate;
 
     public String getId() {
         return id;
@@ -129,5 +141,21 @@ public class Student extends BaseDomain {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/frame/vue/index.css}">
+
+
+    <meta charset="UTF-8">
+    <title>甘肃政法学院历届毕业生联系方式情况登记</title>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+<div id="app" v-cloak>
+    <el-form ref="form" :model="student" label-width="150px">
+        <el-row>
+            <el-col :sapn="12" :offset="6">
+                <h1 v-cloak>甘肃政法学院历届毕业生联系方式情况登记</h1>
+            </el-col>
+        </el-row>
+<el-row>
+    <el-col :span="12" :offset="5">
+    <el-form-item label="姓名"
+                  prop="name"
+                  :rules="{required: true, message: '姓名不能为空', trigger: 'blur'}">
+        <el-input placeholder="请输入姓名" v-model="student.name"></el-input>
+    </el-form-item>
+    <el-form-item label="性别"
+                  prop="sex"
+                  :rules="{required: true, message: '性别不能为空', trigger: 'change'}">
+        <el-radio-group v-model="student.sex">
+            <el-radio label="男"></el-radio>
+            <el-radio label="女"></el-radio>
+        </el-radio-group>
+    </el-form-item>
+    <el-form-item label="毕业时间"
+                  prop="endDate"
+                  :rules="{type: 'date', required: true, message: '毕业时间不能为空', trigger: 'change'}">
+        <el-date-picker type="date" placeholder="选择日期" v-model="student.endDate"></el-date-picker>
+    </el-form-item>
+    <el-form-item label="专业"
+                  prop="profession"
+                  :rules="{required: true, message: '专业不能为空', trigger: 'blur'}">
+        <el-input placeholder="请输入专业" v-model="student.profession"></el-input>
+    </el-form-item>
+    <el-form-item label="现工作单位名称"
+                  prop="company"
+                  :rules="{required: true, message: '现工作单位名称不能为空', trigger: 'blur'}">
+        <el-input placeholder="请输入现工作单位名称" v-model="student.company"></el-input>
+    </el-form-item>
+    <el-form-item label="单位地址"
+                  prop="address"
+                  :rules="{required: true, message: '单位地址不能为空', trigger: 'blur'}">
+        <el-input placeholder="请输入单位地址" v-model="student.address"></el-input>
+    </el-form-item>
+    <el-form-item label="电话"
+                  prop="tele"
+                  :rules="{required: true, message: '电话不能为空', trigger: 'blur'}">
+        <el-input placeholder="请输入单位地址" v-model="student.tele"></el-input>
+    </el-form-item>
+    <el-form-item label="邮件">
+        <el-input placeholder="请输入邮件"  v-model="student.email"></el-input>
+    </el-form-item>
+    <el-form-item label="QQ">
+        <el-input placeholder="请输入QQ" v-model="student.qq"></el-input>
+    </el-form-item>
+    <el-form-item label="备注">
+        <el-input  type="textarea"
+                   placeholder="请输入备注" :autosize="{ minRows: 2, maxRows: 4}" v-model="student.remark"></el-input>
+    </el-form-item>
+
+    </el-col>
+
+</el-row>
+        <el-row>
+            <el-col :sapn="4" :offset="9">
+                <el-form-item>
+                    <el-button type="primary" @click="onSubmit">保存</el-button>
+                </el-form-item>
+            </el-col>
+        </el-row>
+
+
+    </el-form>
+</div>
+
+<script th:src="@{/frame/jquery/jquery191.min.js}"></script>
+<script th:src="@{/frame/jquery/jquery.json.min.js}"></script>
+<script th:src="@{/frame/vue/vue.js}"></script>
+<script th:src="@{/frame/vue/index.js}"></script>
+<script th:inline="javascript">
+    var student = [[${student}]];
+    var app = new Vue({
+        el: "#app",
+        data: {
+            student: student,
+        },
+        methods: {
+            onSubmit:function () {
+                var ths = this;
+                ths.$refs['form'].validate(function (valid) {
+                    if (valid) {
+                        $.ajax({
+                            url: "/student/doAdd",
+                            type: "POST",
+                            contentType: 'application/json;charset=utf-8', //设置请求头信息
+                            dataType: "json",
+                            data: $.toJSON(ths.student),            //将Json对象序列化成Json字符串，toJSON()需要引用jquery.json.min.js
+                            success: function (data) {
+                                if (data.status == 0) {
+                                    ths.$message({
+                                        message: data.msg,
+                                        type: 'success'
+                                    });
+                                    ths.student = data.data;
+                                    ths.student.endDate = new Date(ths.student.endDate);
+                                    //window.location.reload();
+                                } else {
+                                    ths.$message({
+                                        message: data.msg,
+                                        type: 'error'
+                                    });
+                                }
+                            },
+                            error: function (res) {
+                                ths.$message({
+                                    message: "系统错误",
+                                    type: 'error'
+                                });
+                                ths.submitLoading = false;
+                            }
+                        });
+                    }else {
+                        return false;
+                    }
+                });
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * 项目名称：ssm
  * 登陆
  */
-@Controller
+//@Controller
 public class LoginController {
     private static final Log logger = LogFactory.get();
     /*@GetMapping(value = {"/", "/login"})
@@ -26,8 +26,8 @@ public class LoginController {
         return "/login";
     }*/
 
-    @GetMapping("/login")
-    @ResponseBody
+    //@GetMapping("/login")
+    //@ResponseBody
     public String doLogin(String username, String password, String rememberMe, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         System.out.print("$$$$$$$$");
         System.out.print("%%%%%%%%%%%%%%%%%%%%%%%%%%");

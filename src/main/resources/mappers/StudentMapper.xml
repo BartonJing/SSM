@@ -12,9 +12,11 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="qq" property="qq" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="create_date" property="createDate" jdbcType="DATE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, sex, profession, company, address, tele, email, qq, remark
+    id, name, sex, profession, company, address, tele, email, qq, remark, end_date, create_date
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -29,12 +31,12 @@
   <insert id="insert" parameterType="com.barton.domain.entity.Student" >
     insert into student (id, name, sex, 
       profession, company, address, 
-      tele, email, qq, remark
-      )
+      tele, email, qq, remark, 
+      end_date, create_date)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{profession,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{tele,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
-      )
+      #{tele,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{endDate,jdbcType=DATE}, #{createDate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.barton.domain.entity.Student" >
     insert into student
@@ -69,6 +71,12 @@
       <if test="remark != null" >
         remark,
       </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -100,6 +108,12 @@
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -133,6 +147,12 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -146,7 +166,9 @@
       tele = #{tele,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+      end_date = #{endDate,jdbcType=DATE},
+      create_date = #{createDate,jdbcType=DATE}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

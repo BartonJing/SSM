@@ -30,8 +30,8 @@ import java.util.Map;
  * 创建时间： 2018-4-9
  * 描述：redis 配置
  */
-@Configuration
-@EnableCaching
+//@Configuration
+//@EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
     private static final Log log = LogFactory.get();
     @Value("${spring.redis.host}")
