@@ -51,3 +51,22 @@ private StudentService studentService;
         return ServerResponse.createBySuccess("保存成功，感谢您的参与。祝您生活愉快，工作顺利！！！",student);
     }
 }
+/*
+*
+*
+set @rownum=0;
+select
+ @rownum:=@rownum+1 as '序号',
+name as '姓名',
+sex as '姓别',
+end_date as '毕业时间',
+profession as '专业',
+company as '现工作单位名称',
+address as '单位地址',
+tele as '联系方式',
+qq as 'QQ',
+email as '邮箱',
+remark as '备注'
+
+ from student
+* */
