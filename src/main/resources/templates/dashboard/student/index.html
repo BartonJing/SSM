@@ -112,6 +112,9 @@
                 }
             },
             numberVa:function(rule, value, callback) {
+                if(value == null || value == ''){
+                    callback();
+                }
                 var myreg = /^[0-9]*$/ ;
                 if (!myreg.test(value)) {
                     callback(new Error('请输入数字'));

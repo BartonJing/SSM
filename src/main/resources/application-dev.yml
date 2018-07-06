@@ -1,5 +1,6 @@
 server:
   port: 8888
+  context-path: /gsli/
 log:
   path: /home/barton/app
   level: info
