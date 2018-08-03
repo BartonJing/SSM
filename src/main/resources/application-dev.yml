@@ -1,9 +1,13 @@
+
 server:
-  port: 8888
-  context-path: /gsli/
-log:
-  path: /home/barton/app
-  level: info
+  port: 8080
+  undertow:
+   accesslog:
+    enabled: true
+    dir: ../logs
+
+logging:
+  path: ../logs
 spring:
   thymeleaf:
     cache: false
